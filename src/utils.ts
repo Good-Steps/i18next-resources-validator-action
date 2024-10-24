@@ -11,6 +11,7 @@ const getFilesFromFolder = function(directory, extension = '.json') {
     }
   })
 
+  console.log(arrayOfFiles) // DEBUG
   return arrayOfFiles.filter(item => item.endsWith(extension))
 }
 
