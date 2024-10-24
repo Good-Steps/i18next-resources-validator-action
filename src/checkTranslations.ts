@@ -70,6 +70,7 @@ function checkResources(resourcesPath: string, quietMode: boolean): void {
   const allTranslations = {}
   const allLanguages = new Set<string>()
   const resourceFiles = getFilesFromFolder(resourcesPath)
+  info('resourceFiles', resourceFiles)
 
   for (const resourceFile of resourceFiles) {
     const rawResourceFile = readPackageJsonFileAsRaw(resourceFile)
