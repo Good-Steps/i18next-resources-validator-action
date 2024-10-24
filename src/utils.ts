@@ -1,11 +1,17 @@
 import fs from 'fs'
 
-function getFilesFromFolder(directory: string, extension = '.json'): string[] {
-  return fs
-    .readdirSync(directory, { withFileTypes: true })
-    .filter(item => item.isFile())
-    .filter(item => item.name.endsWith(extension))
-    .map(item => `${directory}${item.name}`)
+const getFilesFromFolder = function(directory, extension = '.json') {
+  files = fs.readdirSync(directory, { withFileTypes: true })
+  arrayOfFiles = []
+  files.forEach(function(file) {
+    if (fs.statSync(directory + "/" + file).isDirectory()) {
+      arrayOfFiles = getFilesFromFolder(directory + "/" + file, arrayOfFiles)
+    } else {
+      arrayOfFiles.push(path.join(__dirname, directory, "/", file.name))
+    }
+  })
+
+  return arrayOfFiles.filter(item => item.endsWith(extension))
 }
 
 const setInput = (name: string, value: string): void => {
