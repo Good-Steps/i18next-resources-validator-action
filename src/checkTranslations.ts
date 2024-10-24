@@ -66,6 +66,7 @@ function checkLoadedResources(allTranslations: AllTranslations, allLanguages: Al
 
 function checkResources(resourcesPath: string, quietMode: boolean): void {
   info('Started validating resources', quietMode)
+  info('TRYING TO RUN THIS CODE')
 
   const allTranslations = {}
   const allLanguages = new Set<string>()
